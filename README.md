@@ -1,18 +1,18 @@
 # Cosmological Dynamic Systems
-Two academics, Ahlo and Amendola, derived sets of differential equations from the same fundemental cosmological field equation but achieved very different results. These models have a differing number of critical points despite being derived from the same equation, which is a mathematic impossibility.
+Two academics, Ahlo and Amendola, derived sets of differential equations from the same fundamental cosmological field equation but achieved very different results. These models have a differing number of critical points despite being derived from the same equation, which is a mathematical impossibility.
 
 ![alt text](https://github.com/BillGriffin98/CosmologicalDynamicSystems/blob/main/Ahlo.png)
 
 ![alt text](https://github.com/BillGriffin98/CosmologicalDynamicSystems/blob/main/amendola.png)
 
-My project investigated this discrepency by constructing a coordinate transformation between the two sets of variables and ultimately concluded that Amendola's choice of variables allowed for division by zero and hence produced contradictory results. 
+My project investigated this discrepancy by constructing a coordinate transformation between the two sets of variables and ultimately concluded that Amendola's choice of variables allowed for division by zero and hence produced contradictory results. 
 
-## Simulating on Matlab    
+## Simulating on MATLAB    
 
 While we can study the behaviour of dynamical systems using mathematical tools, it is often helpful to simulate the models and visualise their behaviour. To do this, I generated an initial value and then follow and plotted its trejectory according to the model's governing differential equations. This is an example of an *initial-value problem* and while there are many algorithms that can solve it, I chose the Runge-Kutta method for its speed and ease of implementation.
 
 ### The Runge-Kutta Method:
-To solve the intial value problem for $\frac{dy}{dt} = f(y, t)$ with the initial condition $y(t_0) = y_0$ is given by the following equations:
+To solve the initial value problem for $\frac{dy}{dt} = f(y, t)$ with the initial condition $y(t_0) = y_0$ is given by the following equations:
 
 $$\begin{align*}
 k_1 &= h f(t_n, y_n), \\
@@ -30,14 +30,14 @@ $$
 Hence, to simulate each dynamical system in MatLab. I did the following:
 1. Define a time range $t$, typically $t = 0$ to $t = 1$.
 2. Generate a random pair of initial values $(x_0,y_0)$ for each of our variables.
-3. Initilise arrays for values of $x, y, t$, define the governing differential equations, and input step-size $h$.
+3. Initialise arrays for values of $x, y, t$, define the governing differential equations, and input step-size $h$.
 4. Compute the Runge-Kutta method $1/h$ times and store each value in the array
-5. Plot the arrays against eachother and label the axises accordingly
+5. Plot the arrays against eachother and label the axes accordingly
 
 ### Difficulties in Implementation
-Implementing this method took a lot of trial and error. It was hard to determine exactly how large the step size should be for each model as there was a large varience in computation speed between tests, and hence some models took far too long to plot if the step size was too small. To solve this, I guaged how well each program ran on large step-sizes and then calibrated from there.
+Implementing this method took a lot of trial and error. It was hard to determine exactly how large the step size should be for each model as there was a large variance in computation speed between tests, and hence some models took far too long to plot if the step size was too small. To solve this, I guaged how well each program ran on large step-sizes and then calibrated from there.
 
-In addition to this, I had to fine tune the inititalisation and Runge-Kutta step as often the calculations would blow-up to extremely large values - dwarfing the other results and resulting in unusable diagrams. To solve this, I ensured that my intital values fell within the range permitted by the model's choice of variables. This was a difficult processes as it required careful analysis of the choice of variables within the context of cosmology. 
+In addition to this, I had to fine tune the inititalisation and Runge-Kutta step as often the calculations would blow-up to extremely large values - dwarfing the other results and resulting in unusable diagrams. To solve this, I ensured that my intital values fell within the range permitted by the model's choice of variables. This was a difficult process as it required careful analysis of the choice of variables within the context of cosmology. 
 
 Lastly, the definition for the Runge-Kutta method listed above is for a *1-dimensional* system. As the cosmological dynamic systems featuring in this paper are 2-dimensional, I had to expand the method to account for this. To do this, I applied the method to both the $x$ direction and $y$ direction and plotted the values against each other.
 
@@ -175,13 +175,13 @@ $$P_B: (0,\pi + 2n\pi)$$
 We can produce the phase portrait for this dynamical system 
 ![alt text](https://github.com/BillGriffin98/CosmologicalDynamicSystems/blob/main/Ahlo.png)
 
-At this point, we can notice a discrepency in the number of critical points between Ahlo's and Amendola's dynamical systems. This is troubling as both systems were derived from the same fundemental equations, and hence should have an equal amount of critical points. 
+At this point, we can notice a discrepancy in the number of critical points between Ahlo's and Amendola's dynamical systems. This is troubling as both systems were derived from the same fundamental equations, and hence should have an equal amount of critical points. 
 
 
 
 ## Coordinate Transformations
 
-To investigate the discrepency in the number of critical points, I suspected I'd need to create a coordinate transformation between them and study its properties. 
+To investigate the discrepancy in the number of critical points, I suspected I'd need to create a coordinate transformation between them and study its properties. 
 
 Firstly, I investigated a regular transformation by applying a scaling by a factor of 2 in the $x$-axis to our triangle phase portrait:
 
@@ -201,5 +201,5 @@ which will scale our triangle by a factor of $\frac{1}{1+\epsilon}$ in the $x$ d
 We can see the issues with this transformation in our phase portraits where our triangle appears to be tending towards a rectangle. This demonstrates that a non-regular transformation will lose critical points been transforming between dynamical systems.
 
 ## Conclusion
-Later in my investigation, I found that the coordinate transformation between Ahlo and Amendola's choice of variables is non-regular and therefore explains why we have a discrepency in the number of critical points. I conclude that Amendola was careless when choosing his variables and allowed for division by 0, hence making his model subject to paradoxes.
+Later in my investigation, I found that the coordinate transformation between Ahlo and Amendola's choice of variables is non-regular and therefore explains why we have a discrepancy in the number of critical points. I conclude that Amendola was careless when choosing his variables and allowed for division by 0, hence making his model subject to paradoxes.
 
